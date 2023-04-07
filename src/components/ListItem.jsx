@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import Text from "./Text";
+import { SERVER_URL } from "../api";
 
 export default function ListItem({ recording, setRecordings }) {
   const { blob, id, result } = recording;
@@ -12,7 +13,7 @@ export default function ListItem({ recording, setRecordings }) {
     const fetchText = async (blob) => {
       setLoading(true);
       try {
-        const resp = await fetch("http://localhost:3000/audio", {
+        const resp = await fetch(SERVER_URL, {
           method: "POST",
           body: blob,
           headers: {
