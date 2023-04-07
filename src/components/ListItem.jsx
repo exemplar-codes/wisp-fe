@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Text from "./Text";
 
-export default function ListItem({ blob, id, setRecordings }) {
+export default function ListItem({ recording, setRecordings }) {
+  const { blob, id, result } = recording;
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [result, setResult] = useState(null);
 
   useEffect(() => {
     const fetchText = async (blob) => {
@@ -19,7 +20,13 @@ export default function ListItem({ blob, id, setRecordings }) {
           },
         });
         const data = await resp.json();
-        setResult(data);
+
+        // update global list
+        setRecordings((prev) =>
+          prev.map((item) =>
+            item.id !== id ? item : { ...item, result: data }
+          )
+        );
       } catch (error) {
         setError(error);
       } finally {
@@ -35,7 +42,7 @@ export default function ListItem({ blob, id, setRecordings }) {
       {loading ? "Loading" : null}
       {!loading && error ? JSON.stringify(error) : null}
       {!loading && result ? (
-        <Text result={result} setRecordings={setRecordings} />
+        <Text recording={recording} setRecordings={setRecordings} />
       ) : null}
     </div>
   );

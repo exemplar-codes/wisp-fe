@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Icon from "./Icon";
 
-export default function Text({ result, setRecordings }) {
+export default function Text({ recording, setRecordings }) {
+  const { id, result } = recording;
+
   // copied tick
   const [copiedVisible, setCopiedVisible] = useState(false);
   const copyToClipboard = async () => {
@@ -21,15 +23,7 @@ export default function Text({ result, setRecordings }) {
 
   // delete recording
   const deleteButtonHandler = () => {
-    setRecordings((existingRecordings) => {
-      const idx = existingRecordings.indexOf(result.id);
-      if (idx === -1) return;
-
-      return [
-        ...existingRecordings.slice(0, idx),
-        ...existingRecordings.slice(idx + 1, 0),
-      ];
-    });
+    setRecordings((prev) => prev.filter((item) => item.id !== id));
   };
 
   return (

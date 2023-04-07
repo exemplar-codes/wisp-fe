@@ -11,7 +11,10 @@ function App() {
 
   const onRecordingComplete = (blob) => {
     if (ignoreRecording) setIgnoreRecording(false);
-    else setRecordings((_) => _.concat({ id: Date.now().toString(), blob }));
+    else
+      setRecordings((_) =>
+        _.concat({ id: Date.now().toString(), blob, result: null })
+      );
   };
 
   const recorderControls = useAudioRecorder();
@@ -57,7 +60,11 @@ function App() {
       />
       <div className="main-listing">
         {recordings.map((item) => (
-          <ListItem {...item} key={item.id} setRecordings={setRecordings} />
+          <ListItem
+            recording={item}
+            key={item.id}
+            setRecordings={setRecordings}
+          />
         ))}
       </div>
     </div>
