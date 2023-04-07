@@ -21,7 +21,8 @@ function App() {
       : recorderControls.startRecording();
   };
 
-  // at top level to avoid stale values (closure)
+  // keyboard shortcuts
+  // at top level to avoid stale values(closure)
   document.onkeydown = (event) => {
     switch (true) {
       case isCtrlC(event):
