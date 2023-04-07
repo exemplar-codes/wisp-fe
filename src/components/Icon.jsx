@@ -6,7 +6,10 @@ export default function Icon({ name, height = "40px", ...rest }) {
 
   useEffect(() => {
     const fetchIcon = async (filePath) => {
-      const fetchedIcon = await import(filePath);
+      const fetchedIcon = await import(
+        /* @vite-ignore */
+        filePath
+      );
 
       setIcon(fetchedIcon.default);
     };
