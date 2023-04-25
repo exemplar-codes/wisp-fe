@@ -7,3 +7,4 @@ Simple Voice to Text web app (to be run locally, as of now)
 
 Supports keyboard shortcuts
 
+Note: backend part at https://github.com/exemplar-codes/wisp
