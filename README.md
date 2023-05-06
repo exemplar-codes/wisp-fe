@@ -1,5 +1,5 @@
 # wisp-fe
-Voice (en) to Text using openai-whisper
+Voice (en) to Text using openai-whisper (works offline)
 
 Simple Voice to Text web app (to be run locally, as of now)
 
