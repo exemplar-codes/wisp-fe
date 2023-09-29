@@ -12,3 +12,7 @@ Supports keyboard shortcuts
 
 ## Usage instructions
 https://github.com/exemplar-codes/wisp#instructions-for-use
+
+## Update
+[ChatGPT can talk now (Sep 29, 2023)](
+https://youtube.com/shorts/Zz_J4fxfjXs?si=ioXitGwPD56O3c5A)
